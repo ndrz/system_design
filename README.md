@@ -174,9 +174,9 @@ Application layer merupakan lapisan yang langsung berinteraksi dengan data dari 
 ### Presentation Layer
 
 Presentation layer juga disebut Translation layer. Data dari Application layer diekstraksi di sini dan dimanipulasi sesuai format yang diperlukan untuk dikirim melalui jaringan. Fungsi lapisan penyajian adalah : 
-- Translasi/Terjemahan: Misalnya, ASCII ke EBCDIC.
-- Enkripsi/Dekripsi: Enkripsi data menerjemahkan data ke dalam bentuk atau kode lain. Data terenkripsi dikenal sebagai ciphertext dan data yang didekripsi dikenal sebagai teks biasa. Nilai kunci digunakan untuk mengenkripsi serta mendekripsi data.
-- Kompresi: Mengurangi jumlah bit yang perlu ditransmisikan pada jaringan.
+- **Translasi/Terjemahan**: Misalnya, ASCII ke EBCDIC.
+- **Enkripsi/Dekripsi**: Enkripsi data menerjemahkan data ke dalam bentuk atau kode lain. Data terenkripsi dikenal sebagai ciphertext dan data yang didekripsi dikenal sebagai teks biasa. Nilai kunci digunakan untuk mengenkripsi serta mendekripsi data.
+- **Kompresi**: Mengurangi jumlah bit yang perlu ditransmisikan pada jaringan.
 
 ### Session
 
