@@ -178,10 +178,12 @@ Presentation layer juga disebut Translation layer. Data dari Application layer d
 - **Enkripsi/Dekripsi**: Enkripsi data menerjemahkan data ke dalam bentuk atau kode lain. Data terenkripsi dikenal sebagai ciphertext dan data yang didekripsi dikenal sebagai teks biasa. Nilai kunci digunakan untuk mengenkripsi serta mendekripsi data.
 - **Kompresi**: Mengurangi jumlah bit yang perlu ditransmisikan pada jaringan.
 
-### Session
+### Session Layer
+
+Session Layer adalah lapisan yang bertanggung jawab untuk membuka dan menutup komunikasi antara kedua perangkat. Waktu antara saat komunikasi dibuka dan ditutup dikenal sebagai sesi. Lapisan sesi memastikan bahwa sesi tetap terbuka cukup lama untuk mentransfer semua data yang dipertukarkan, dan kemudian segera menutup sesi untuk menghindari pemborosan sumber daya. Lapisan sesi juga menyinkronkan transfer data dengan pos pemeriksaan.
 
 
-### Transport
+### Transport Layer
 
 
 ### Network
