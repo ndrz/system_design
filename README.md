@@ -200,19 +200,31 @@ Fungsi dari Transport layer adalah sebagai berikut:
 - **Segmentasi dan Reassembly** : Lapisan ini menerima pesan dari lapisan (sesi), dan memecah pesan menjadi unit-unit yang lebih kecil. Setiap segmen yang dihasilkan memiliki header yang terkait dengannya. Lapisan transport di stasiun tujuan menyusun kembali pesan.
 - **Service Point Addressing** : Untuk mengirimkan pesan ke proses yang benar, header lapisan transport menyertakan jenis alamat yang disebut Service Point Addressing atau alamat port. Jadi dengan menentukan alamat ini, lapisan transport memastikan bahwa pesan dikirim ke proses yang benar.
 
-### Network
+### Network Layer.
+
+Network layer bertanggung jawab untuk memfasilitasi transfer data antara dua jaringan yang berbeda. Network layer memecah segmen dari Transport layer menjadi unit-unit yang lebih kecil, yang disebut paket, pada perangkat pengirim, dan menyusun kembali paket-paket ini pada perangkat penerima. Network layer juga menemukan jalur fisik terbaik untuk data mencapai tujuannya, ini dikenal sebagai perutean. Jika kedua perangkat yang berkomunikasi berada di jaringan yang sama, maka Network layer tidak diperlukan.
 
 
-### Data Link
+### Data Link Layer
+
+Data Link Layer sangat mirip dengan network layer, kecuali data link layer memfasilitasi transfer data antara dua perangkat di jaringan yang sama. Data Link Layer mengambil paket dari network layer dan memecahnya menjadi potongan-potongan kecil yang disebut frame.
 
 
-### Physical
+### Physical Layer
 
+Physical Layer ini mencakup peralatan fisik yang terlibat dalam transfer data, seperti kabel dan switches. Physical Layer juga merupakan layer di mana data dikonversi menjadi bit, yang merupakan string 1 dan 0. Physical Layer antara kedua perangkat juga harus menyetujui konvensi sinyal sehingga angka 1 dapat dibedakan dari angka 0 pada kedua perangkat.
 
 
 # TCP and UDP
 
 ## TCP
+
+Transmission Control Protocol (TCP) berorientasi pada koneksi, artinya setelah koneksi dibuat, data dapat ditransmisikan ke kedua arah. TCP memiliki sistem bawaan untuk memeriksa kesalahan dan untuk menjamin data akan dikirim sesuai urutan pengirimannya, menjadikannya protokol yang sempurna untuk mentransfer informasi seperti diam gambar, data file, dan halaman web.
+
+![tcp](https://raw.githubusercontent.com/ndrz/system_design/main/files/tcp.png)
+
+Tetapi sementara TCP secara ditangkapah dapat dipertahankan, mekanisme umpan baliknya juga menghasilkan overhead yang lebih besar, yang berarti penggunaan bandwidth yang tersedia di jaringan lebih besar.
+
 
 
 
