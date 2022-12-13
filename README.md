@@ -225,51 +225,94 @@ Transmission Control Protocol (TCP) berorientasi pada koneksi, artinya setelah k
 
 Tetapi sementara TCP secara ditangkapah dapat dipertahankan, mekanisme umpan baliknya juga menghasilkan overhead yang lebih besar, yang berarti penggunaan bandwidth yang tersedia di jaringan lebih besar.
 
-
-
-
-
 ## UDP
 
+User Datagram Protocol (UDP) adalah protokol internet tanpa koneksi yang lebih sederhana di mana layanan pengecekan kesalahan dan pemulihan tidak diperlukan. Dengan UDP, tidak ada overhead untuk membuka koneksi, memelihara koneksi, atau mengakhiri koneksi. Data terus dikirim ke penerima, apakah mereka menerimanya atau tidak.
+
+![udp](https://raw.githubusercontent.com/ndrz/system_design/main/files/udp.png)
+
+Ini lebih disukai untuk komunikasi waktu nyata seperti siaran atau jaringan transmisi multicast. Kita harus menggunakan UDP melalui TCP saat kita membutuhkan latensi terendah dan data terlambat lebih buruk daripada hilangnya data.
 
 ## TCP vs UDP
+
+TCP adalah protokol yang berorientasi pada koneksi, sedangkan UDP adalah protokol tanpa koneksi. Perbedaan utama antara TCP dan UDP adalah kecepatan, karena TCP relatif lebih lambat daripada UDP. Secara keseluruhan, UDP adalah protokol yang jauh lebih cepat, lebih sederhana, dan lebih efisien, namun pengiriman ulang paket data yang hilang hanya dimungkinkan dengan TCP.
+
+TCP menyediakan pengiriman data yang dipesan dari pengguna ke server (dan sebaliknya), sedangkan UDP tidak didedikasikan untuk komunikasi end-to-end, juga tidak memeriksa kesiapan penerima.
+
+| Feature             | TCP                                         | UDP                                |
+| ------------------- | ------------------------------------------- | ---------------------------------- |
+| Connection          | Requires an established connection          | Connectionless protocol            |
+| Guaranteed delivery | Can guarantee delivery of data              | Cannot guarantee delivery of data  |
+| Re-transmission     | Re-transmission of lost packets is possible | No re-transmission of lost packets |
+| Speed               | Slower than UDP                             | Faster than TCP                    |
+| Broadcasting        | Does not support broadcasting               | Supports broadcasting              |
+| Use cases           | HTTPS, HTTP, SMTP, POP, FTP, etc            | Video streaming, DNS, VoIP, etc    |
 
 
 # Domain Name System (DNS)
 
+Sebelumnya kita telah mempelajari alamat IP yang memungkinkan setiap mesin terhubung dengan mesin lainnya. Tapi seperti yang kita tahu manusia lebih nyaman dengan nama daripada angka. Lebih mudah mengingat nama seperti google.comdaripada sesuatu seperti 122.250.192.232.
+
+Ini membawa kita ke Sistem Nama Domain (DNS) yang merupakan sistem penaamaan hirarki dan terdesentralisasi yang digunakan untuk menerjemahkan nama domain yang dapat dibaca manusia ke alamat IP.
 
 ## How DNS works
 
+![dns](https://raw.githubusercontent.com/ndrz/system_design/main/files/dns.png)
+
+Pencarian DNS melibatkan delapan langkah berikut:
+
+Klien mengetikkan example.com ke dalam web browser, kueri dikirim ke internet dan diterima oleh penyelesai DNS.
+Penyelesaian kemudian secara rekursif menanyakan nama server root DNS.
+Server root merespons penyelesaikan dengan alamat Top-Level Domain (TLD).
+Resolver kemudian membuat permintaan ke .comTLD.
+Server TLD kemudian merespons dengan alamat IP dari server nama domain, example.com .
+Terakhir, penyelesaikan rekursif mengirimkan kueri ke server nama domain.
+Alamat IP untuk example.com kemudian dikembalikan ke penyelesai dari nama server.
+Penyelesaian DNS kemudian merespons ke browser web dengan alamat IP dari domain yang diminta pada awalnya.
+Setelah alamat IP diselesaikan, klien harus dapat meminta konten dari alamat IP yang diselesaikan. Misalnya, IP yang diselesaikan dapat mengembalikan halaman web untuk dirender di browser.
 
 ## Server types
 
-Now, let's look at the four key groups of servers that make up the DNS infrastructure.
+Sekarang, mari kita lihat empat kelompok server utama yang menyusun infrastruktur DNS.
 
 ### DNS Resolver
 
+Penyelesaian DNS (juga dikenal sebagai penyelesai rekursif DNS) adalah perhentian pertama dalam kueri DNS. Penyelesaian rekursif bertindak sebagai perantara antara klien dan server nama DNS. Setelah menerima kueri DNS dari klien web, penyelesaikan rekursif akan merespon dengan data yang di-cache, atau mengirimkan permintaan ke server nama root, diikuti dengan permintaan lain ke server nama TLD, lalu satu permintaan terakhir ke server nama resmi. Setelah menerima respon dari server nama otoritatif yang berisi alamat IP yang diminta, penyelesaikan rekursif kemudian mengirimkan respon ke klien.
 
 ### DNS root server
 
+Server root menerima kueri penyelesai rekursif yang menyertakan nama domain, dan server nama root merespons dengan mengarahkan penyelesaikan rekursif ke server nama TLD, berdasarkan ekstensi domain tersebut ( , , , dll .com. .net) .org. Root nameserver diawasi oleh organisasi nirlaba bernama Internet Corporation for Assigned Names and Numbers (ICANN) .
+
+Ada 13 nama server akar DNS yang diketahui oleh setiap penyelesai rekursif. Perhatikan bahwa meskipun ada 13 root nameserver, bukan berarti hanya ada 13 mesin di sistem root nameserver. Ada 13 jenis root nameserver, tetapi ada beberapa pertarungan dari masing-masing di seluruh dunia, yang menggunakan perutean Anycast untuk memberikan respons cepat.
 
 
 ### TLD nameserver
 
+Server nama TLD menyimpan informasi untuk semua nama domain yang berbagi ekstensi domain umum, seperti .com, .net, atau apa pun yang muncul setelah titik terakhir di URL.
 
+Pengelolaan server nama TLD ditangani oleh Internet Assigned Numbers Authority (IANA) , yang merupakan cabang dari ICANN . IANA memecah server TLD menjadi dua kelompok utama:
+
+Domain tingkat atas umum : Ini adalah domain seperti .com, .org, .net, .edu, dan .gov.
+Domain tingkat atas kode negara : Ini termasuk semua domain yang khusus untuk suatu negara atau negara bagian. Contohnya adalah .uk, .us, .ru, dan .jp.
 
 ### Authoritative DNS server
 
+Server nama otoritatif biasanya merupakan langkah terakhir penyelesain dalam perjalanan untuk mendapatkan alamat IP. Server nama otoritatif berisi informasi khusus untuk nama domain yang dilayaninya (misalnya google.com ) dan dapat memberikan penyelesaikan rekursif dengan alamat IP server yang ditemukan di catatan DNS A, atau jika domain memiliki catatan CNAME (alias) itu akan memberikan penyelesaikan rekursif dengan domain alias , di mana penyelesai rekursif harus melakukan pencarian DNS yang sama sekali baru untuk mendapatkan catatan dari server nama otoritatif (seringkali catatan A yang berisi alamat IP). Jika tidak dapat menemukan domain, kembalikan pesan NXDOMAIN.
 
 ## Query Types
 
-
+Ada tiga jenis kueri dalam sistem DNS:
 ### Recursive
 
+Dalam kueri rekursif, klien DNS memerlukan server DNS (biasanya penyelesai rekursif DNS) akan merespons klien dengan catatan sumber daya yang diminta atau pesan kesalahan jika penyelesain tidak dapat menemukan catatan.
 
 ### Iterative
 
+Dalam kueri iteratif, klien DNS memberikan nama host, dan Penyelesaian mengembalikan DNS jawaban terbaik yang dapat diberikan. Jika penyelesai DNS memiliki catatan DNS yang relevan di cache-nya, itu akan mengembalikannya. Jika tidak, ini merujuk klien DNS ke Server Root atau Server Nama Resmi lainnya yang terdekat dengan zona DNS yang diperlukan. Klien DNS kemudian harus mengulang kueri secara langsung terhadap server DNS yang dibatalkan.
 
 ### Non-recursive
 
+Kueri non-rekursif adalah kueri di mana Penyelesaian DNS sudah mengetahui jawabannya. Itu baik segera mengembalikan catatan DNS karena sudah menyimpan di cache lokal, atau menanyakan Server Nama DNS yang memegang untuk catatan, artinya pasti memegang IP yang benar untuk nama host itu. Dalam kedua kasus tersebut, putaran kueri tambahan tidak diperlukan (seperti dalam kueri rekursif atau iteratif). Sebaliknya, respon segera dikembalikan ke klien.
 
 ## Record Types
 
