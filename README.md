@@ -257,7 +257,7 @@ Ini membawa kita ke Sistem Nama Domain (DNS) yang merupakan sistem penaamaan hir
 
 ## How DNS works
 
-![dns](https://raw.githubusercontent.com/ndrz/system_design/main/files/dns.png)
+![dns](https://raw.githubusercontent.com/ndrz/system_design/main/files/how-dns-works.png)
 
 Pencarian DNS melibatkan delapan langkah berikut:
 
