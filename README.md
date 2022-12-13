@@ -185,6 +185,20 @@ Session Layer adalah lapisan yang bertanggung jawab untuk membuka dan menutup ko
 
 ### Transport Layer
 
+Transport layer menyediakan layanan ke Application layer dan mengambil layanan dari Network Layer. Data di lapisan transport disebut sebagai **segmen** .
+
+Lapisan ini bertanggung jawab atas pengiriman pesan secara end to end. Lapisan transport juga memberikan pengakuan atas transmisi data yang berhasil dan mentransmisikan ulang data jika ditemukan kesalahan.
+
+Di sisi pengirim, lapisan transport menerima data yang diformat dari lapisan atas, melakukan segmentasi, dan juga menerapkan kontrol aliran dan kesalahan untuk memastikan transmisi data yang tepat. Selain itu juga lapisan transport menambahkan nomor port sumber dan tujuan di headernya dan meneruskan data yang tersegmentasi ke Network layer.
+
+Umumnya, nomor port tujuan ini dikonfigurasi, baik secara default ataupun manual. Misalnya, ketika aplikasi web membuat permintaan ke server web, biasanya menggunakan nomor port 80, karena ini adalah port default yang ditetapkan untuk aplikasi web. Banyak aplikasi memiliki port default yang ditetapkan.
+
+Di sisi penerima, lapisan transport atau Transport Layer membaca nomor port dari headernya dan meneruskan data yang telah diterimanya ke aplikasi masing-masing. Lapisan ini juga melakukan pengurutan dan pemasangan kembali data yang tersegmentasi.
+
+Fungsi dari Transport layer adalah sebagai berikut:
+
+- **Segmentasi dan Reassembly** : Lapisan ini menerima pesan dari lapisan (sesi), dan memecah pesan menjadi unit-unit yang lebih kecil. Setiap segmen yang dihasilkan memiliki header yang terkait dengannya. Lapisan transport di stasiun tujuan menyusun kembali pesan.
+- **Service Point Addressing** : Untuk mengirimkan pesan ke proses yang benar, header lapisan transport menyertakan jenis alamat yang disebut Service Point Addressing atau alamat port. Jadi dengan menentukan alamat ini, lapisan transport memastikan bahwa pesan dikirim ke proses yang benar.
 
 ### Network
 
