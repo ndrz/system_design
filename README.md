@@ -165,7 +165,7 @@ Meskipun model ini tidak secara langsung diimplementasikan dalam jaringan TCP/IP
 Model OSI terbagi atas 7 lapisan. Setiap lapisan memiliki fungsi yang berbeda.
 Ketujuh lapisan tersebut dapat didefinisikan sebagai berikut, dari atas ke bawah:
 
-![osi-model](https://raw.githubusercontent.com/ndrz/system_design/main/files/osi-model/osi-model.png)
+![osi-model](https://raw.githubusercontent.com/ndrz/system_design/main/files/osi-model.png)
 
 ### Application Layer
 
