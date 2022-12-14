@@ -324,8 +324,7 @@ Beberapa solusi pengelola DNS yang banyak digunakan:
 - [Azure DNS](https://azure.microsoft.com/en-in/services/dns)
 - [NS1](https://ns1.com/products/managed-dns)
 
-# Clustering
+# Load Balancing
 
-Pada tingkat tinggi, cluster komputer adalah sekelompok dua atau lebih komputer, atau node, yang berjalan secara paralel untuk mencapai tujuan bersama. Hal ini memungkinkan beban kerja yang terdiri dari sejumlah besar tugas individu yang dapat diparalelkan untuk didistribusikan di antara node dalam kluster. Akibatnya, tugas-tugas ini dapat memanfaatkan memori gabungan dan kekuatan pemrosesan setiap komputer untuk meningkatkan kinerja secara keseluruhan.
+Load balancing memungkinkan untuk mendistribusikan lalu lintas jaringan yang masuk di beberapa sumber daya untuk memastikan ketersediaan dan keandalan yang tinggi dengan mengirimkan permintaan hanya ke sumber daya yang online. Ini memberikan fleksibilitas untuk menambah atau mengurangi sumber daya sesuai permintaan yang ditentukan.
 
-Untuk membangun cluster komputer, node individu harus terhubung ke jaringan untuk mengaktifkan komunikasi ruas. Perangkat lunak ini kemudian dapat digunakan untuk menggabungkan node bersama dan membentuk cluster. Ini mungkin memiliki perangkat penyimpanan bersama dan / atau penyimpanan lokal pada setiap node.
