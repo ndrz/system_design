@@ -303,171 +303,29 @@ Zona DNS adalah bagian berbeda dari namespace domain yang didelegasikan ke badan
 
 ## DNS Caching
 
+Cache DNS (kadang-kadang disebut cache DNS resolver) adalah database sementara, yang dikelola oleh sistem operasi komputer, yang berisi catatan semua kunjungan baru-baru ini dan percobaan kunjungan ke situs web dan domain internet lainnya. Dengan kata lain, cache DNS hanyalah memori dari pencarian DNS terbaru yang dapat dengan cepat dirujuk oleh komputer kita ketika mencoba mencari cara untuk memuat situs web.
+
+Sistem Nama Domain menerapkan time-to-live (TTL) pada setiap data DNS. TTL menentukan jumlah detik data dapat di-cache oleh klien atau server DNS. Ketika catatan disimpan dalam cache, nilai TTL apa pun yang menyertainya juga akan disimpan. Server terus memperbarui TTL dari catatan yang disimpan dalam cache, menghitung mundur setiap detik. Ketika mencapai nol, catatan dihapus atau dihapus dari cache. Pada saat itu, jika kueri untuk rekaman itu diterima, server DNS harus memulai proses resolusi.
+
 
 ## Reverse DNS
+Pencarian DNS terbalik adalah kueri DNS untuk nama domain yang terkait dengan alamat IP tertentu. Ini menyelesaikan kebalikan dari pencarian DNS maju yang lebih umum digunakan, di mana sistem DNS dikueri untuk mengembalikan alamat IP. Proses penyelesaian balik alamat IP menggunakan catatan PTR. Jika server tidak memiliki catatan PTR, itu tidak dapat menyelesaikan pencarian terbalik.
 
+Pencarian terbalik biasanya digunakan oleh server email. Server email memeriksa dan melihat apakah pesan email berasal dari server yang valid sebelum membawanya ke jaringan mereka. Banyak server email akan menolak pesan dari server mana pun yang tidak mendukung pencarian terbalik atau dari server yang sangat tidak mungkin sah.
 
-## Examples
-
-
-# Load Balancing
-
-
-## But why?
-
-
-## Workload distribution
-## Layers
-
-
-### Network layer
-
-
-### Application layer
-
-
-## Types
-
-
-### Software
-
-
-### Hardware
-
-
-## Routing Algorithms
-
-Now, let's discuss commonly used routing algorithms:
-
-
-## Advantages
-
-
-## Redundant load balancers
-
-
-## Features
-
-
-### Active-Active
-
-
-
-### Active-Passive
-
-
-## Advantages
-
-
-## Load balancing vs Clustering
-
-
-## Challenges
-
-
+_Note: Pencarian DNS terbalik tidak diadopsi secara universal karena tidak penting untuk fungsi normal internet._
 
 ## Examples
+Beberapa solusi pengelola DNS yang banyak digunakan:
 
+- [Route53](https://aws.amazon.com/route53)
+- [Cloudflare DNS](https://www.cloudflare.com/dns)
+- [Google Cloud DNS](https://cloud.google.com/dns)
+- [Azure DNS](https://azure.microsoft.com/en-in/services/dns)
+- [NS1](https://ns1.com/products/managed-dns)
 
-# Caching
+# Clustering
 
+Pada tingkat tinggi, cluster komputer adalah sekelompok dua atau lebih komputer, atau node, yang berjalan secara paralel untuk mencapai tujuan bersama. Hal ini memungkinkan beban kerja yang terdiri dari sejumlah besar tugas individu yang dapat diparalelkan untuk didistribusikan di antara node dalam kluster. Akibatnya, tugas-tugas ini dapat memanfaatkan memori gabungan dan kekuatan pemrosesan setiap komputer untuk meningkatkan kinerja secara keseluruhan.
 
-## Caching and Memory
-
-
-## Cache hit and Cache miss
-
-### Cache hit
-
-
-### Cache miss
-
-
-## Cache Invalidation
-
-
-### Write-through cache
-
-
-### Write-around cache
-
-
-### Write-back cache
-
-
-## Eviction policies
-
-Following are some of the most common cache eviction policies:
-
-
-## Distributed Cache
-
-
-## Global Cache
-
-
-
-## Use cases
-
-
-**When not to use caching?**
-
-
-## Advantages
-
-
-## Examples
-
-
-
-# Content Delivery Network (CDN)
-
-## How does a CDN work?
-
-
-## Types
-
-
-### Push CDNs
-
-
-### Pull CDNs
-
-
-## Disadvantages
-
-
-
-## Examples
-
-
-# Proxy
-
-## Types
-
-
-### Forward Proxy
-
-
-### Reverse Proxy
-
-
-
-## Load balancer vs Reverse Proxy
-
-
-## Examples
-
-
-# Availability
-
-## Availability in Sequence vs Parallel
-
-### Sequence
-
-
-
-
-  
-  
-
+Untuk membangun cluster komputer, node individu harus terhubung ke jaringan untuk mengaktifkan komunikasi ruas. Perangkat lunak ini kemudian dapat digunakan untuk menggabungkan node bersama dan membentuk cluster. Ini mungkin memiliki perangkat penyimpanan bersama dan / atau penyimpanan lokal pada setiap node.
