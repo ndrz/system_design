@@ -273,8 +273,24 @@ Dalam kueri iteratif, klien DNS memberikan nama host, dan Penyelesaian mengembal
 
 Kueri non-rekursif adalah kueri di mana Penyelesaian DNS sudah mengetahui jawabannya. Itu baik segera mengembalikan catatan DNS karena sudah menyimpan di cache lokal, atau menanyakan Server Nama DNS yang memegang untuk catatan, artinya pasti memegang IP yang benar untuk nama host itu. Dalam kedua kasus tersebut, putaran kueri tambahan tidak diperlukan (seperti dalam kueri rekursif atau iteratif). Sebaliknya, respon segera dikembalikan ke klien.
 
-## Record Types
+## Tipe DNS Record 
 
+DNS Record (aka zona files) adalah instruksi yang berada di server DNS otoritatif dan memberikan informasi tentang domain termasuk alamat IP apa yang terkait dengan domain tersebut dan bagaimana cara menangani permintaan untuk domain tersebut.
+
+Catatan ini terdiri dari serangkaian file teks yang ditulis dalam apa yang dikenal sebagai _DNS syntax_. Sintaks DNS hanyalah serangkaian karakter yang digunakan sebagai perintah yang memberi tahu server DNS apa yang harus dilakukan. Semua catatan DNS juga memiliki _"TTL"_ , yang merupakan singkatan dari time-to-live, dan menunjukkan seberapa sering server DNS akan me-refresh catatan tersebut.
+
+Ada lebih banyak jenis rekaman tetapi untuk saat ini, mari kita lihat beberapa yang paling umum digunakan:
+
+- **A (Address record)**: Merupakan record yang menyimpan IP address of a domain.
+- **AAAA (IP Version 6 Address record)**: Data yang berisi alamat IPv6 untuk domain (berlawanan dengan data A, yang menyimpan alamat IPv4)
+- **CNAME (Canonical Name record)**: Meneruskan satu domain atau subdomain ke domain lain, TIDAK memberikan alamat IP.
+- **MX (Mail exchanger record)**: Mengarahkan email ke serve email.
+- **TXT (Text Record)**: Record ini memungkinkan admin menyimpan catatan teks dalam record. Record tersebut sering digunakan untuk keamanan email.
+- **NS (Name Server records)**: Menyimpan nama server untuk DNS entry.
+- **SOA (Start of Authority)**: Menyimpan informasi  admin tentang domain.
+- **SRV (Service Location record)**: Menentukan port untuk layanan tertentu.
+- **PTR (Reverse-lookup Pointer records)**: Menyediakan nama domain dalam pencarialn terbalik.
+- **CERT (Certificate record)**: Menyimpan public key sertifikat .
 
 ## Subdomains
 
