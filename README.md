@@ -293,10 +293,13 @@ Ada lebih banyak jenis rekaman tetapi untuk saat ini, mari kita lihat beberapa y
 - **CERT (Certificate record)**: Menyimpan public key sertifikat .
 
 ## Subdomains
+Subdomain adalah bagian tambahan dari nama domain utama kita. Biasanya digunakan untuk memisahkan situs web secara logis menjadi beberapa bagian. Kita dapat membuat beberapa subdomain atau domain anak di domain utama.
 
+Misalnya, `blog.example.com` dimana `blog` adalah subdomainnya, `example` adalah domain utama, dan `.com` adalah top-level domain (TLD). Contoh serupa dapat berupa `support.example.com` atau `careers.example.com`.
 
 ## DNS Zones
 
+Zona DNS adalah bagian berbeda dari namespace domain yang didelegasikan ke badan hukum seperti orang, organisasi, atau perusahaan, yang bertanggung jawab untuk memelihara zona DNS. Zona DNS juga merupakan fungsi administratif, memungkinkan kontrol granular komponen DNS, seperti server nama otoritatif.
 
 ## DNS Caching
 
