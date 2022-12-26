@@ -220,14 +220,15 @@ Ini membawa kita ke Sistem Nama Domain (DNS) yang merupakan sistem penaamaan hir
 
 Pencarian DNS melibatkan delapan langkah berikut:
 
-Klien mengetikkan example.com ke dalam web browser, kueri dikirim ke internet dan diterima oleh penyelesai DNS.
-Penyelesaian kemudian secara rekursif menanyakan nama server root DNS.
-Server root merespons penyelesaikan dengan alamat Top-Level Domain (TLD).
-Resolver kemudian membuat permintaan ke .comTLD.
-Server TLD kemudian merespons dengan alamat IP dari server nama domain, example.com .
-Terakhir, penyelesaikan rekursif mengirimkan kueri ke server nama domain.
-Alamat IP untuk example.com kemudian dikembalikan ke penyelesai dari nama server.
-Penyelesaian DNS kemudian merespons ke browser web dengan alamat IP dari domain yang diminta pada awalnya.
+1. Klien mengetikkan [example.com] (http://example.com) ke dalam web browser, kueri dikirim ke internet dan diterima oleh penyelesai DNS.
+2. Penyelesaian kemudian secara rekursif menanyakan nama server root DNS.
+3. Server root merespons penyelesaikan dengan alamat Top-Level Domain (TLD).
+4. Resolver kemudian membuat permintaan ke .comTLD.
+5. Server TLD kemudian merespons dengan alamat IP dari server nama domain, [example.com] (http://example.com) .
+6. Terakhir, penyelesaikan rekursif mengirimkan kueri ke server nama domain.
+7. Alamat IP untuk [example.com] (http://example.com) kemudian dikembalikan ke penyelesai dari nama server.
+8. Penyelesaian DNS kemudian merespons ke browser web dengan alamat IP dari domain yang diminta pada awalnya.
+
 Setelah alamat IP diselesaikan, klien harus dapat meminta konten dari alamat IP yang diselesaikan. Misalnya, IP yang diselesaikan dapat mengembalikan halaman web untuk dirender di browser.
 
 ## Server types
