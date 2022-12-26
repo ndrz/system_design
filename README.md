@@ -257,7 +257,7 @@ Pengelolaan server nama TLD ditangani oleh [Internet Assigned Numbers Authority 
 
 ### Authoritative DNS server
 
-Server nama otoritatif biasanya merupakan langkah terakhir penyelesain dalam perjalanan untuk mendapatkan alamat IP. Server nama otoritatif berisi informasi khusus untuk nama domain yang dilayaninya (misalnya google.com ) dan dapat memberikan penyelesaikan rekursif dengan alamat IP server yang ditemukan di catatan DNS A, atau jika domain memiliki catatan CNAME (alias) itu akan memberikan penyelesaikan rekursif dengan domain alias , di mana penyelesai rekursif harus melakukan pencarian DNS yang sama sekali baru untuk mendapatkan catatan dari server nama otoritatif (seringkali catatan A yang berisi alamat IP). Jika tidak dapat menemukan domain, kembalikan pesan NXDOMAIN.
+Server nama otoritatif biasanya merupakan langkah terakhir penyelesain dalam perjalanan untuk mendapatkan alamat IP. Server nama otoritatif berisi informasi khusus untuk nama domain yang dilayaninya (misalnya [google.com] (http://google.com)) dan dapat memberikan penyelesaikan rekursif dengan alamat IP server yang ditemukan di catatan DNS A, atau jika domain memiliki catatan CNAME (alias) itu akan memberikan penyelesaikan rekursif dengan domain alias , di mana penyelesai rekursif harus melakukan pencarian DNS yang sama sekali baru untuk mendapatkan catatan dari server nama otoritatif (seringkali catatan A yang berisi alamat IP). Jika tidak dapat menemukan domain, kembalikan pesan NXDOMAIN.
 
 ## Query Types
 
