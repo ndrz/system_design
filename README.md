@@ -329,3 +329,11 @@ Beberapa solusi pengelola DNS yang banyak digunakan:
 
 Load balancing memungkinkan untuk mendistribusikan lalu lintas jaringan yang masuk di beberapa sumber daya untuk memastikan ketersediaan dan keandalan yang tinggi dengan mengirimkan permintaan hanya ke sumber daya yang online. Ini memberikan fleksibilitas untuk menambah atau mengurangi sumber daya sesuai permintaan yang ditentukan.
 
+![load-blancing](https://github.com/ndrz/system_design/blob/main/files/load-balancer.png)
+
+Untuk skalabilitas dan redundansi tambahan, kami dapat mencoba memuat keseimbangan di setiap lapisan sistem kami:
+
+![load-balancing-layers](https://github.com/ndrz/system_design/blob/main/files/load-balancer-layers.png)
+
+
+
