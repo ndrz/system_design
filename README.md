@@ -221,13 +221,13 @@ Ini membawa kita ke Sistem Nama Domain (DNS) yang merupakan sistem penaamaan hir
 Pencarian DNS melibatkan delapan langkah berikut:
 
 1. Klien mengetikkan [example.com] (http://example.com) ke dalam web browser, kueri dikirim ke internet dan diterima oleh penyelesai DNS.
-2. Penyelesaian kemudian secara rekursif menanyakan nama server root DNS.
+2. Resolver kemudian secara rekursif menanyakan nama server root DNS.
 3. Server root merespons penyelesaikan dengan alamat Top-Level Domain (TLD).
-4. Resolver kemudian membuat permintaan ke .comTLD.
+4. Resolver kemudian membuat permintaan ke '.com' TLD.
 5. Server TLD kemudian merespons dengan alamat IP dari server nama domain, [example.com] (http://example.com) .
-6. Terakhir, penyelesaikan rekursif mengirimkan kueri ke server nama domain.
-7. Alamat IP untuk [example.com] (http://example.com) kemudian dikembalikan ke penyelesai dari nama server.
-8. Penyelesaian DNS kemudian merespons ke browser web dengan alamat IP dari domain yang diminta pada awalnya.
+6. Terakhir, Resolver rekursif mengirimkan kueri ke server nama domain.
+7. Alamat IP untuk [example.com] (http://example.com) kemudian dikembalikan ke resolevr dari nama server.
+8. Resolver DNS kemudian merespons ke browser web dengan alamat IP dari domain yang diminta pada awalnya.
 
 Setelah alamat IP diselesaikan, klien harus dapat meminta konten dari alamat IP yang diselesaikan. Misalnya, IP yang diselesaikan dapat mengembalikan halaman web untuk dirender di browser.
 
@@ -241,19 +241,19 @@ Penyelesaian DNS (juga dikenal sebagai penyelesai rekursif DNS) adalah perhentia
 
 ### DNS root server
 
-Server root menerima kueri penyelesai rekursif yang menyertakan nama domain, dan server nama root merespons dengan mengarahkan penyelesaikan rekursif ke server nama TLD, berdasarkan ekstensi domain tersebut ( , , , dll .com. .net) .org. Root nameserver diawasi oleh organisasi nirlaba bernama Internet Corporation for Assigned Names and Numbers (ICANN) .
+Server root menerima kueri penyelesai rekursif yang menyertakan nama domain, dan server nama root merespons dengan mengarahkan penyelesaikan rekursif ke server nama TLD, berdasarkan ekstensi domain tersebut (`.com`, `.net`,`'org`,etc). Root nameserver diawasi oleh organisasi nirlaba bernama [Internet Corporation for Assigned Names and Numbers (ICANN)] ((https://www.icann.org).
 
 Ada 13 nama server akar DNS yang diketahui oleh setiap penyelesai rekursif. Perhatikan bahwa meskipun ada 13 root nameserver, bukan berarti hanya ada 13 mesin di sistem root nameserver. Ada 13 jenis root nameserver, tetapi ada beberapa pertarungan dari masing-masing di seluruh dunia, yang menggunakan perutean Anycast untuk memberikan respons cepat.
 
 
 ### TLD nameserver
 
-Server nama TLD menyimpan informasi untuk semua nama domain yang berbagi ekstensi domain umum, seperti .com, .net, atau apa pun yang muncul setelah titik terakhir di URL.
+Server nama TLD menyimpan informasi untuk semua nama domain yang berbagi ekstensi domain umum, seperti `.com`, `.net`, atau apa pun yang muncul setelah titik terakhir di URL.
 
-Pengelolaan server nama TLD ditangani oleh Internet Assigned Numbers Authority (IANA) , yang merupakan cabang dari ICANN . IANA memecah server TLD menjadi dua kelompok utama:
+Pengelolaan server nama TLD ditangani oleh [Internet Assigned Numbers Authority (IANA)] (https://www.iana.org), yang merupakan cabang dari [ICANN](https://www.iana.org) . IANA memecah server TLD menjadi dua kelompok utama:
 
-Domain tingkat atas umum : Ini adalah domain seperti .com, .org, .net, .edu, dan .gov.
-Domain tingkat atas kode negara : Ini termasuk semua domain yang khusus untuk suatu negara atau negara bagian. Contohnya adalah .uk, .us, .ru, dan .jp.
+- **Domain tingkat atas umum** : Ini adalah domain seperti `.com`, `.org`, `.net`, `.edu`, dan `.gov`.
+- **Domain tingkat atas kode negara** : Ini termasuk semua domain yang khusus untuk suatu negara atau negara bagian. Contohnya adalah `.uk`, `.us`, `.ru`, dan `.jp`.
 
 ### Authoritative DNS server
 
