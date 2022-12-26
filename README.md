@@ -210,7 +210,7 @@ TCP menyediakan pengiriman data yang dipesan dari pengguna ke server (dan sebali
 
 # Domain Name System (DNS)
 
-Sebelumnya kita telah mempelajari alamat IP yang memungkinkan setiap mesin terhubung dengan mesin lainnya. Tapi seperti yang kita tahu manusia lebih nyaman dengan nama daripada angka. Lebih mudah mengingat nama seperti google.comdaripada sesuatu seperti 122.250.192.232.
+Sebelumnya kita telah mempelajari alamat IP yang memungkinkan setiap mesin terhubung dengan mesin lainnya. Tapi seperti yang kita tahu manusia lebih nyaman dengan nama daripada angka. Lebih mudah mengingat nama seperti `google.com` daripada sesuatu seperti `122.250.192.232`.
 
 Ini membawa kita ke Sistem Nama Domain (DNS) yang merupakan sistem penaamaan hirarki dan terdesentralisasi yang digunakan untuk menerjemahkan nama domain yang dapat dibaca manusia ke alamat IP.
 
